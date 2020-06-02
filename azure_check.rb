@@ -47,7 +47,7 @@ end
 #     Successfully connected to Azure with your AZURE_CLIENT_ID and AZURE_CLIENT_SECRET
 #     $
 #
-# Fail looks like this:
+# Failure looks like this:
 #
 #     $ ruby azure_check.rb
 #     Failed to connected to Azure with your AZURE_CLIENT_ID and AZURE_CLIENT_SECRET
