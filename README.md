@@ -2,6 +2,13 @@
 
 Simple script to check azure access with `AZURE_CLIENT_ID` and `AZURE_CLIENT_SECRET`.
 
+## Usage
+
+    bundle install
+    ruby azure_check.rb
+
+## Example
+
 Success looks like this:
 
     $ bundle exec ruby azure_check.rb
