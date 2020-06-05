@@ -7,18 +7,18 @@ class Check
   include Azure::Resources::Profiles::Latest::Mgmt::Models
 
   def initialize
-    @client_id = ENV['AZURE_CLIENT_ID']
-    @client_secret = ENV['AZURE_CLIENT_SECRET']
-    @subscription_id = ENV['AZURE_SUBSCRIPTION_ID'] || AzureInfo.subscription_id
-    @tenant_id = ENV['AZURE_TENANT_ID'] || AzureInfo.tenant_id
+    @client_id = ENV['ARM_CLIENT_ID']
+    @client_secret = ENV['ARM_CLIENT_SECRET']
+    @subscription_id = ENV['ARM_SUBSCRIPTION_ID'] || AzureInfo.subscription_id
+    @tenant_id = ENV['ARM_TENANT_ID'] || AzureInfo.tenant_id
   end
 
   def call
     resource_groups = ResourceGroups.new(client)
     puts resource_groups.list.map(&:name)
-    puts "Successfully connected to Azure with your AZURE_CLIENT_ID and AZURE_CLIENT_SECRET"
+    puts "Successfully connected to Azure with your ARM_CLIENT_ID and ARM_CLIENT_SECRET"
   rescue Exception => e
-    puts "Failed to connected to Azure with your AZURE_CLIENT_ID and AZURE_CLIENT_SECRET"
+    puts "Failed to connected to Azure with your ARM_CLIENT_ID and ARM_CLIENT_SECRET"
     puts "#{e.message}: #{e.message}"
   end
 
@@ -44,13 +44,13 @@ end
 # Success looks like this:
 #
 #     $ bundle exec ruby azure_check.rb
-#     Successfully connected to Azure with your AZURE_CLIENT_ID and AZURE_CLIENT_SECRET
+#     Successfully connected to Azure with your ARM_CLIENT_ID and ARM_CLIENT_SECRET
 #     $
 #
 # Failure looks like this:
 #
 #     $ ruby azure_check.rb
-#     Failed to connected to Azure with your AZURE_CLIENT_ID and AZURE_CLIENT_SECRET
+#     Failed to connected to Azure with your ARM_CLIENT_ID and ARM_CLIENT_SECRET
 #     {
 #       "message": "Couldn't login to Azure, please verify your tenant id, client id and client secret",
 #       "request": null,
