@@ -31,3 +31,9 @@ Failure looks like this:
       "request": null,
       "response": null
     }
+
+## Additional Env Vars
+
+The `ARM_SUBSCRIPTION_ID` and `ARM_TENANT_ID` can also be optionally set. By default, this script infers their values from your `az` CLI setup using [azure_info](https://github.com/boltops-tools/azure_info).  It essentially uses:
+
+    az account show
