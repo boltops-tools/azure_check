@@ -20,6 +20,7 @@ class Check
   rescue Exception => e
     puts "Failed to connected to Azure with your ARM_CLIENT_ID and ARM_CLIENT_SECRET"
     puts "#{e.message}: #{e.message}"
+    exit 1
   end
 
   def client
