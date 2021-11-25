@@ -15,7 +15,11 @@ class Check
 
   def call
     resource_groups = ResourceGroups.new(client)
-    puts resource_groups.list.map(&:name)
+    if resource_groups.list.empty?
+      puts "No resource groups found, but was able to successfully make the Azure SDK API call."
+    else
+      puts resource_groups.list.map(&:name)
+    end
     puts "Successfully connected to Azure with your ARM_CLIENT_ID and ARM_CLIENT_SECRET"
   rescue Exception => e
     puts "Failed to connected to Azure with your ARM_CLIENT_ID and ARM_CLIENT_SECRET"
